@@ -2,8 +2,8 @@
 
 class product{
 
-    private $name;
-    private $brand;
+    public $name;
+    public $brand;
 
     public function __construct($name, $brand)
     {
@@ -11,32 +11,39 @@ class product{
         $this -> brand = $brand;
     }
 
-    private function getName()
-    {
-        return $this->name;
-    }
+    public function getHtml(){
+        return
 
-    public function setName($name){
+            "<div>" .
 
-        $this->name = $name;
+            "<h2> prodotto </h2>" .
 
-        $this->getName();
-    }
+            "Nome prodotto: " . $this->name . "<br>" . "Marca: " . $this->brand
 
-    private function getBrand()
-    {
-        return $this->brand;
-    }
-
-    public function setbrand($brand){
-
-        $this->brand = $brand;
-
-        $this->getBrand();
-    }
-
-    public function gethtml(){
-        return "Nome prodotto:" . $this->name . "<br>" . "Marca" . $this->brand;
+            . "</div>";
     }
 }
 
+class category extends product{
+    public $title;
+
+    public function __construct($name, $brand, $title)
+     
+     {
+        parent ::  __construct($name, $brand);
+        $this -> title = $title;
+     }
+
+    public function getHtml()
+    {
+        return parent :: getHtml() . "categoria: " . $this-> title;
+    }
+
+}
+
+
+
+// $giocattolo =  new product ("Crocchette", "Wiskas",);
+$giocattoloCaratteristiche = new category ("Crocchette", "Wiskas","mangime");
+
+echo $giocattoloCaratteristiche->getHtml();
