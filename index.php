@@ -5,7 +5,13 @@ class product{
     private $name;
     private $brand;
 
-    public function getName()
+    public function __construct($name, $brand)
+    {
+        $this -> name = $name;
+        $this -> brand = $brand;
+    }
+
+    private function getName()
     {
         return $this->name;
     }
@@ -14,10 +20,10 @@ class product{
 
         $this->name = $name;
 
-
+        $this->getName();
     }
 
-    public function getBrand()
+    private function getBrand()
     {
         return $this->brand;
     }
@@ -25,6 +31,8 @@ class product{
     public function setbrand($brand){
 
         $this->brand = $brand;
+
+        $this->getBrand();
     }
 
     public function gethtml(){
@@ -32,4 +40,3 @@ class product{
     }
 }
 
-echo "ok";
